@@ -26,11 +26,11 @@ void main() {
     );
 
     // Assert
-    expect(find.byType(CircularProgressIndicator),
-        findsNothing); // Loading indicator should not be present
+    expect(find.byType(CircularProgressIndicator), findsNothing);
 
-    findsNWidgets(fakePhotoModels.length); // Grid tiles should be present
-    expect(find.text(''), findsOneWidget); // PhotoModel title should be present
+    findsNWidgets(fakePhotoModels.length); // Grid tiles  should be present
+    expect(find.text(fakePhotoModels[0].user!.name!),
+        findsOneWidget); // PhotoModel title should be present
   });
 }
 
