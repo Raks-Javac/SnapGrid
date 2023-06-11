@@ -36,7 +36,7 @@ class _HomeViewState extends State<HomeView> {
     // await Isolate.spawn<SendPort>(_fetchPhotosInIsolate, receivePort.sendPort);
     // SendPort mikeSendPort = await receivePort.first;
     // Listen for scroll events to trigger pagination
-    provider.fetchMoreImages();
+    provider.fetchPhotos();
     _scrollController.addListener(() {
       if (_scrollController.position.pixels ==
           _scrollController.position.maxScrollExtent) {
