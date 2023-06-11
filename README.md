@@ -123,6 +123,23 @@ The codebase of the Snapgrid App is structured as follows:
     - Widget naming convention: Widgets are prefixed with "SgWidgets".
 
 
+## Offline Optimization and Cache
+
+SnapGrid utilizes offline optimization and caching techniques to enhance the user experience, improve performance, and provide seamless offline capabilities. The following components were used for offline optimization:
+
+### Storage using Shared Preferences
+
+SnapGrid utilizes the shared_preferences package to store and retrieve data locally on the device. This enables the app to persist user preferences, such as the API key, and other relevant data between app sessions. Shared Preferences provides a lightweight and efficient way to store key-value pairs in a persistent manner.
+
+### Caching Network Images
+
+To optimize image loading and provide offline capabilities, SnapGrid uses the cache_network_image package. This package caches the network images locally on the device, allowing the app to display images even when offline or with limited network connectivity. By caching images, SnapGrid reduces the need for repeated network requests, resulting in faster image loading and a smoother user experience.
+
+The combination of shared_preferences and cache_network_image ensures that SnapGrid efficiently utilizes device storage and optimizes image loading, providing a seamless and responsive experience for users, both online and offline.
+
+
+
+
 ## Testing
 
 The SnapGrid app includes unit tests and widget tests to ensure the correctness of its components and features. The tests are located in the test directory and are organized as follows:
