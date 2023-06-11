@@ -6,16 +6,39 @@ SnapGrid is a Flutter application that allows users to browse and view photos in
 
 
 
-## Installation
+## Flutter Setup and Dependencies
 
-To install and run the SnapGrid app, follow these steps:
+To set up and run the Snapgrid App on your local machine, follow these steps:
 
-1. Ensure you have Flutter installed on your machine. For installation instructions, refer to the [Flutter documentation](https://flutter.dev/docs/get-started/install).
+1. Ensure you have Flutter and Dart SDK installed. If not, refer to the official Flutter documentation to install the Flutter SDK for your operating system. [Flutter documentation](https://flutter.dev/docs/get-started/install).
 
-2. Clone the SnapGrid repository:
+2. Clone the repository to your local machine using the following command to clone the the SnapGrid repository:
 
 ```bash
 git clone https://github.com/Raks-Javac/SnapGrid.git
+```
+
+3. Navigate to the project directory 
+
+```cd SnapGrid
+```
+
+4.  After cloning navigate to the project directory, fetch the required dependencies by running using 
+
+```
+flutter pub get 
+```
+
+5. Set up any necessary configuration files, such as API keys or environment variables. Refer to the provided documentation or contact the development team for more details.
+
+6. Launch the app on your preferred emulator or connected device using the following command:
+
+
+```
+flutter run 
+```
+
+
 
 
 ## Code Structure
@@ -42,37 +65,6 @@ The codebase of the Snapgrid App is structured as follows:
   - `/resources`: Houses assets, colors, typography, and theme-related files.
   - `/widgets`: Contains reusable widgets used throughout the app.
     - Widget naming convention: Widgets are prefixed with "SgWidgets".
-
-## Flutter Setup and Dependencies
-
-To set up and run the Snapgrid App on your local machine, follow these steps:
-
-1. Ensure you have Flutter and Dart SDK installed. If not, refer to the official Flutter documentation to install the Flutter SDK for your operating system.
-
-2. Clone the repository to your local machine using the following command.
-
-3. After cloning navigate to the project directory.
-
-4. Fetch the required dependencies by running using 
-
-```
-flutter pub get 
-```
-
-5. Set up any necessary configuration files, such as API keys or environment variables. Refer to the provided documentation or contact the development team for more details.
-
-6. Launch the app on your preferred emulator or connected device using the following command:
-
-
-```
-flutter run 
-```
-
-Keeping in mind the flavor you want to run
-
-
-
-
 
 ## Contributing as a team member
 
