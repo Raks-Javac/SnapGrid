@@ -20,7 +20,8 @@ git clone https://github.com/Raks-Javac/SnapGrid.git
 
 3. Navigate to the project directory 
 
-```cd SnapGrid
+```
+cd SnapGrid
 ```
 
 4.  After cloning navigate to the project directory, fetch the required dependencies by running using 
