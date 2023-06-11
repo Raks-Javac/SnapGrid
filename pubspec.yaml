@@ -1,0 +1,62 @@
+name: snap_grid
+description: A new Flutter project.
+
+
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=2.19.6 <3.0.0'
+
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+
+
+  cupertino_icons: ^1.0.2
+  # for api calls
+  http: ^0.13.4
+  # for state management
+  provider: ^6.0.1
+  # for screen responsiveness and design scalability
+  flutter_screenutil: ^5.7.0
+  # to render high def icons in the app
+  flutter_svg: ^2.0.5
+  # To mock interfaces and abstractions for testing
+  mockito: ^5.4.0
+  # To display network images and also have a lazy loader as a placeholder
+  cached_network_image: ^3.2.3
+  # To get a temporary directory to download the image on 
+  path_provider: ^2.0.15
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+
+  flutter_lints: ^2.0.0
+
+
+flutter:
+
+  uses-material-design: true
+
+
+  assets:
+    - assets/icons/
+    - assets/images/
+
+
+
+  fonts:
+    - family: Poppins
+      fonts:
+        - asset: assets/fonts/poppins/Poppins-Regular.ttf
+    - family: PoppinsBold
+      fonts:
+        - asset: assets/fonts/poppins/Poppins-Bold.ttf
