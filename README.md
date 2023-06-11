@@ -1,4 +1,4 @@
-#Snapgrid
+## Snapgrid
 
 ## Objective
 SnapGrid is a Flutter application that allows users to browse and view photos in a grid layout. It leverages the Splash Photo API to fetch and display photos with their titles. Users can scroll through the grid, tap on a photo to view it in full screen, and see additional details like the description and author.
