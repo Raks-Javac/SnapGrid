@@ -34,11 +34,14 @@ dependencies:
   # To get a temporary directory to download the image on 
   path_provider: ^2.0.15
   shared_preferences: ^2.1.2
+  flutter_launcher_icons: ^0.13.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
+    #a dev dependency needed for the app laucnher icon
+  flutter_launcher_icons: ^0.13.1
 
   flutter_lints: ^2.0.0
 

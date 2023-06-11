@@ -1,3 +1,5 @@
+import 'dart:isolate';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:provider/provider.dart';
@@ -17,6 +19,8 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
+  ReceivePort receivePort = ReceivePort();
+
   final ScrollController _scrollController = ScrollController();
 
   @override
@@ -27,12 +31,12 @@ class _HomeViewState extends State<HomeView> {
     });
   }
 
-  callInit() {
-    // Fetch initial photos
+  callInit() async {
     final provider = Provider.of<PhotoProvider>(context, listen: false);
-    provider.fetchPhotos();
-
+    // await Isolate.spawn<SendPort>(_fetchPhotosInIsolate, receivePort.sendPort);
+    // SendPort mikeSendPort = await receivePort.first;
     // Listen for scroll events to trigger pagination
+    provider.fetchMoreImages();
     _scrollController.addListener(() {
       if (_scrollController.position.pixels ==
           _scrollController.position.maxScrollExtent) {
@@ -40,6 +44,21 @@ class _HomeViewState extends State<HomeView> {
       }
     });
   }
+
+  // @override
+  // void dispose() {
+  //   super.dispose();
+  //   _isolate?.kill(priority: Isolate.immediate);
+  // }
+
+//   void _fetchPhotosInIsolate(SendPort sendPort) {
+//     // Fetch the photos here
+// // Fetch initial photos
+//     final provider = Provider.of<PhotoProvider>(context, listen: false);
+
+//     // Send the fetched photos back to the main isolate
+//     sendPort.send(provider.fetchPhotos);
+//   }
 
   @override
   Widget build(BuildContext context) {

@@ -11,12 +11,14 @@ abstract class AbstractAppNetwork {
 class AppNetwork implements AbstractAppNetwork {
   //Passed this access key in the environment varibles: --dart-define=
   static const String accessKey = Environment.apiKEY;
+
   static const Map<String, String> header = {
     'Authorization': "Client-ID $accessKey"
   };
   @override
   Future<dynamic> getRequest(String url,
       {Map<String, String>? customHeader}) async {
+    Logger.logInfo("API_KEY = accessKey");
     final response =
         await http.get(Uri.parse(url), headers: customHeader ?? header);
     Logger.logInfo(url);
