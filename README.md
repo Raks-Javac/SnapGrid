@@ -64,7 +64,8 @@ if you are a VsCode lover, your launch.json may look like this
             "request": "launch",
             "type": "dart",
             "args": [
-                "--dart-define API_KEY=[API_KEY]"
+                "--dart-define",
+                "API_KEY=[API_KEY]"
             ]
         },
         {
