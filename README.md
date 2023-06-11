@@ -50,39 +50,6 @@ flutter pub get
 flutter run --dart-define API_KEY="API_KEY".
 ```
 
-if you are a VsCode lover, your launch.json may look like this
-
-```
-{
-    // Use IntelliSense to learn about possible attributes.
-    // Hover to view descriptions of existing attributes.
-    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
-    "version": "0.2.0",
-    "configurations": [
-        {
-            "name": "snap_grid",
-            "request": "launch",
-            "type": "dart",
-            "args": [
-                "--dart-define",
-                "API_KEY=[API_KEY]"
-            ]
-        },
-        {
-            "name": "snap_grid (profile mode)",
-            "request": "launch",
-            "type": "dart",
-            "flutterMode": "profile"
-        },
-        {
-            "name": "snap_grid (release mode)",
-            "request": "launch",
-            "type": "dart",
-            "flutterMode": "release"
-        }
-    ]
-}
-```
 
 NOTE: This only adds the arguments in the run command in debug mode , also you would need to replace [API_KEY] with your api key.
 
