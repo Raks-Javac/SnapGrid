@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:provider/provider.dart';
 import 'package:snap_grid/src/core/extensions/context_extensions.dart';
 import 'package:snap_grid/src/core/extensions/widget_extensions.dart';
@@ -21,8 +22,9 @@ class _HomeViewState extends State<HomeView> {
   @override
   void initState() {
     super.initState();
-    //runs this function in the initState
-    callInit();
+    SchedulerBinding.instance.addPostFrameCallback((_) {
+      callInit();
+    });
   }
 
   callInit() {
