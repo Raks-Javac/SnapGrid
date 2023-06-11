@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:snap_grid/src/core/network/network.dart';
+import 'package:snap_grid/src/core/utils/utils.dart';
 import 'package:snap_grid/src/features/home/data/models/photo_model.dart';
 import 'package:snap_grid/src/features/home/repository/photo_repository.dart';
 
@@ -96,7 +97,7 @@ class PhotoProvider extends ChangeNotifier {
       await PhotoRepository(appNetwork)
           .downloadPhotoFromDownloadUrl(downloadUrl);
     } catch (e) {
-      print(e.toString());
+      Logger.logError(e.toString());
       _errorMessage = e.toString();
       notifyListeners();
     }

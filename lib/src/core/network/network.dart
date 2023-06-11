@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:snap_grid/src/core/utils/environment.dart';
+import 'package:snap_grid/src/core/utils/utils.dart';
 
 abstract class AbstractAppNetwork {
   Future<dynamic> getRequest(String url);
@@ -19,9 +19,9 @@ class AppNetwork implements AbstractAppNetwork {
       {Map<String, String>? customHeader}) async {
     final response =
         await http.get(Uri.parse(url), headers: customHeader ?? header);
-    print(url);
-    print(response.body);
-    print(response.statusCode);
+    Logger.logInfo(url);
+    Logger.logInfo(response.body);
+    Logger.logInfo(response.statusCode);
     if (response.statusCode == 200) {
       // Request successful
       return json.decode(response.body);
@@ -51,8 +51,8 @@ class AppNetwork implements AbstractAppNetwork {
       {Map<String, String>? customHeader}) async {
     final response =
         await http.get(Uri.parse(url), headers: customHeader ?? header);
-    print(response.body);
-    print(response.statusCode);
+    Logger.logInfo(response.body);
+    Logger.logInfo(response.statusCode);
     if (response.statusCode == 200) {
       // Request successful
       return response;

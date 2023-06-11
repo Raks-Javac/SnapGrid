@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:path_provider/path_provider.dart';
 import 'package:snap_grid/src/core/network/network.dart';
+import 'package:snap_grid/src/core/utils/utils.dart';
 import 'package:snap_grid/src/features/home/data/models/photo_model.dart';
 
 //an interface of the repository , which can also be mocked when writing unit test
@@ -31,9 +32,9 @@ class PhotoRepository implements AbstractPhotoRepository {
       final file = File('${directory.path}/image.jpg');
       await file.writeAsBytes(bytes);
 
-      print('Image downloaded and saved!');
+      Logger.logInfo('Image downloaded and saved!');
     } else {
-      print('Failed to download image.');
+      Logger.logError('Failed to download image.');
     }
   }
 }
