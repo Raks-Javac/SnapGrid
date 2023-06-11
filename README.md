@@ -66,6 +66,16 @@ The codebase of the Snapgrid App is structured as follows:
   - `/widgets`: Contains reusable widgets used throughout the app.
     - Widget naming convention: Widgets are prefixed with "SgWidgets".
 
+
+## Testing
+
+The SnapGrid app includes unit tests and widget tests to ensure the correctness of its components and features. The tests are located in the test directory and are organized as follows:
+
+- `unit`: Contains unit tests that verify the individual units of code, such as functions, utilities, or models.
+
+- `widgets`: Contains widget tests that verify the behavior and integration of widgets within the app's views.
+
+
 ## Contributing as a team member
 
 We welcome contributions to the Snapgrid Merchant App. To contribute, please follow these guidelines:
