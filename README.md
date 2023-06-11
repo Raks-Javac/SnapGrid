@@ -145,4 +145,4 @@ The tests in the SnapGrid app adhere to best practices, including isolated unit 
 
 With the SnapGrid app, you can explore and enjoy a beautiful grid of photos. Follow the installation instructions, explore the code architecture, and run the tests to ensure the app's stability and functionality. Happy browsing!
 
-If you have any questions or encounter any issues, please don't hesitate to contact our support team at support@example.com.
+If you have any questions or encounter any issues, please don't hesitate to contact or email rufaikudus2014@gmail.com.
