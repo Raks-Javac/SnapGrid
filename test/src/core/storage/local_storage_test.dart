@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:snap_grid/src/core/storage/local_storage.dart';
@@ -160,6 +161,7 @@ void main() {
     late MockSharedPreferences mockSharedPreferences;
 
     setUp(() {
+      WidgetsFlutterBinding.ensureInitialized();
       mockSharedPreferences = MockSharedPreferences();
       sgLocalStorage = SgLocalStorage();
     });
