@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:snap_grid/src/core/utils/environment.dart';
 
 abstract class AbstractAppNetwork {
   Future<dynamic> getRequest(String url);
@@ -8,8 +9,8 @@ abstract class AbstractAppNetwork {
 }
 
 class AppNetwork implements AbstractAppNetwork {
-  //TODO: pass this access key in the --dart-define=
-  static const String accessKey = "q1n_F4B_y-j5lzeNoVjNcmT7JbkBDs41nfQgqO6z52E";
+  //Passed this access key in the --dart-define=
+  static const String accessKey = Environment.apiKEY;
   static const Map<String, String> header = {
     'Authorization': "Client-ID $accessKey"
   };

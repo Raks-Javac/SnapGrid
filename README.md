@@ -30,7 +30,12 @@ cd SnapGrid
 flutter pub get 
 ```
 
-5. Set up any necessary configuration files, such as API keys or environment variables. Refer to the provided documentation or contact the development team for more details.
+5. Set up any necessary configuration files, such as API keys or environment variables.Since the Access Key is needed for the api calls in the app and its a vital credentials which would need to be passed in runTime ,using the following command:
+
+```
+flutter run --dart-define API_KEY="API_KEY".
+```
+
 
 6. Launch the app on your preferred emulator or connected device using the following command:
 
