@@ -102,3 +102,12 @@ We welcome contributions to the Snapgrid Merchant App. To contribute, please fol
 5. Open a pull request against the /dev branch in the repository, clearly describing the changes made and their purpose and the lead developer would pick it up from there.
 
 
+
+
+Make sure you have a connected device or simulator available to execute the tests.
+
+The tests in the SnapGrid app adhere to best practices, including isolated unit tests for pure functions and widget tests for UI components.
+
+With the SnapGrid app, you can explore and enjoy a beautiful grid of photos. Follow the installation instructions, explore the code architecture, and run the tests to ensure the app's stability and functionality. Happy browsing!
+
+If you have any questions or encounter any issues, please don't hesitate to contact our support team at support@example.com.
