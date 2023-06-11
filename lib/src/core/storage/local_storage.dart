@@ -2,13 +2,17 @@ import 'dart:convert';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
+abstract class AsbstractSgLocalStorage {
+  Future<dynamic> getPhotosFromStore();
+  Future<void> storePhotosFromStore(dynamic value);
+}
 //snapgrid storage class
 
 class SgStoreKey {
   static const String getPhotoKeys = "sgPhotoKey";
 }
 
-class SgLocalStorage {
+class SgLocalStorage implements AsbstractSgLocalStorage {
   SgLocalStorage._internal();
   static final SgLocalStorage _instance = SgLocalStorage._internal();
 
@@ -16,7 +20,7 @@ class SgLocalStorage {
     return _instance;
   }
   final LocalStorage _localStorage = LocalStorage();
-
+  @override
 //gets photos response from store
   Future<dynamic> getPhotosFromStore() async {
     final getphoto = await _localStorage.getData(SgStoreKey.getPhotoKeys);
@@ -25,6 +29,7 @@ class SgLocalStorage {
   }
 
   //stores photos response
+  @override
   Future<void> storePhotosFromStore(dynamic value) async {
     await _localStorage.saveData(SgStoreKey.getPhotoKeys, value);
   }
