@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:snap_grid/src/core/network/exceptions.dart';
 import 'package:snap_grid/src/core/utils/utils.dart';
 
 abstract class AbstractAppNetwork {
@@ -19,32 +20,36 @@ class AppNetwork implements AbstractAppNetwork {
   Future<dynamic> getRequest(String url,
       {Map<String, String>? customHeader}) async {
     Logger.logInfo("API_KEY = accessKey");
-    final response =
-        await http.get(Uri.parse(url), headers: customHeader ?? header);
-    Logger.logInfo(url);
-    Logger.logInfo(response.body);
-    Logger.logInfo(response.statusCode);
-    if (response.statusCode == 200) {
-      // Request successful
-      return json.decode(response.body);
-    } else if (response.statusCode == 400) {
-      // Bad request
-      throw Exception('Bad request');
-    } else if (response.statusCode == 401) {
-      // Unauthorized
-      throw Exception('Unauthorized');
-    } else if (response.statusCode == 403) {
-      // Forbidden
-      throw Exception('Forbidden');
-    } else if (response.statusCode == 404) {
-      // Not found
-      throw Exception('Not found');
-    } else if (response.statusCode == 500 || response.statusCode == 503) {
-      // Server error
-      throw Exception('Something went wrong on the server');
-    } else {
-      // Handle other status codes if needed
-      throw Exception('An error occurred');
+    try {
+      final response =
+          await http.get(Uri.parse(url), headers: customHeader ?? header);
+      Logger.logInfo(url);
+      Logger.logInfo(response.body);
+      Logger.logInfo(response.statusCode);
+      if (response.statusCode == 200) {
+        // Request successful
+        return json.decode(response.body);
+      } else if (response.statusCode == 400) {
+        // Bad request
+        throw CustomException('Bad request');
+      } else if (response.statusCode == 401) {
+        // Unauthorized
+        throw CustomException('Unauthorized');
+      } else if (response.statusCode == 403) {
+        // Forbidden
+        throw CustomException('Forbidden');
+      } else if (response.statusCode == 404) {
+        // Not found
+        throw CustomException('Not found');
+      } else if (response.statusCode == 500 || response.statusCode == 503) {
+        // Server error
+        throw CustomException('Something went wrong on the server');
+      } else {
+        // Handle other status codes if needed
+        throw CustomException('An error occurred');
+      }
+    } catch (e) {
+      return null;
     }
   }
 
@@ -60,22 +65,22 @@ class AppNetwork implements AbstractAppNetwork {
       return response;
     } else if (response.statusCode == 400) {
       // Bad request
-      throw Exception('Bad request');
+      throw CustomException('Bad request');
     } else if (response.statusCode == 401) {
       // Unauthorized
-      throw Exception('Unauthorized');
+      throw CustomException('Unauthorized');
     } else if (response.statusCode == 403) {
       // Forbidden
-      throw Exception('Forbidden');
+      throw CustomException('Forbidden');
     } else if (response.statusCode == 404) {
       // Not found
-      throw Exception('Not found');
+      throw CustomException('Not found');
     } else if (response.statusCode == 500 || response.statusCode == 503) {
       // Server error
-      throw Exception('Something went wrong on the server');
+      throw CustomException('Something went wrong on the server');
     } else {
       // Handle other status codes if needed
-      throw Exception('An error occurred');
+      throw CustomException('An error occurred');
     }
   }
 }

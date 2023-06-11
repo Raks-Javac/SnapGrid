@@ -1,6 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:shimmer/shimmer.dart';
 import 'package:snap_grid/src/core/extensions/context_extensions.dart';
+import 'package:snap_grid/src/shared/resources/res.dart';
 
 class SgWidgetsCachedNetworkImage extends StatelessWidget {
   final String url;
@@ -24,15 +26,26 @@ class SgWidgetsCachedNetworkImage extends StatelessWidget {
     return CachedNetworkImage(
       width: context.width,
       imageUrl: url,
-      placeholder: (context, url) =>
-          placeHolderWidget ??
-          Icon(
-            Icons.image,
-            size: 100,
-            color: context.theme.primaryColor.withOpacity(0.3),
-          ),
+      placeholder: (context, url) => SizedBox(
+        width: 100.0,
+        height: 90.0,
+        child: Shimmer.fromColors(
+          baseColor: SgColors.normalBlack.withOpacity(0.9),
+          highlightColor: SgColors.normalBlack.withOpacity(0.2),
+          child: placeHolderWidget ??
+              const Icon(
+                Icons.image,
+                size: 70,
+              ),
+        ),
+      ),
       errorWidget: (context, url, error) =>
-          erroWidget ?? const Icon(Icons.error),
+          erroWidget ??
+          const Icon(
+            Icons.error,
+            size: 45,
+            color: SgColors.primaryColor,
+          ),
       fit: boxFitMetrics ?? BoxFit.cover,
       height: context.height,
     );

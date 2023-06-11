@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:shared_preferences/shared_preferences.dart';
 
 //snapgrid storage class
@@ -18,7 +20,8 @@ class SgLocalStorage {
 //gets photos response from store
   Future<dynamic> getPhotosFromStore() async {
     final getphoto = await _localStorage.getData(SgStoreKey.getPhotoKeys);
-    return getphoto;
+    final serializeStore = json.decode(getphoto);
+    return serializeStore;
   }
 
   //stores photos response
@@ -48,7 +51,7 @@ class LocalStorage {
     } else if (value is List<String>) {
       await prefs.setStringList(key, value);
     } else {
-      throw ArgumentError('Invalid data type');
+      prefs.setString(key, json.encode(value));
     }
   }
 

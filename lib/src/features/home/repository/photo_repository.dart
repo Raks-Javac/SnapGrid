@@ -19,14 +19,16 @@ class PhotoRepository implements AbstractPhotoRepository {
   @override
   Future<List<PhotoModel>> fetchPhotos(int page, int perPage) async {
     var getPhotoRequest = await appNetwork.getRequest(
-        "https://api.unsplash.com/photos?page=$page&per_page=$perPage");
-
+      "https://api.unsplash.com/photos?page=$page&per_page=$perPage",
+    );
+    Logger.logInfo(getPhotoRequest);
     if (getPhotoRequest == null) {
       //check storage and fetch from storage if the api call fails
       final photosReponseFromStorage =
           await SgLocalStorage().getPhotosFromStore();
       if (photosReponseFromStorage != null) {
         //if value from store is not null (that is the storeage is not empty)
+        Logger.logInfo(photosReponseFromStorage);
         getPhotoRequest = photosReponseFromStorage;
       }
     }

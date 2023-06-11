@@ -4,5 +4,5 @@ class CustomException implements Exception {
   CustomException(this.message);
 
   @override
-  String toString() => 'CustomException: $message';
+  String toString() => message;
 }
