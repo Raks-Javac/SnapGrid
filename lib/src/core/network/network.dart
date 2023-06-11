@@ -9,7 +9,7 @@ abstract class AbstractAppNetwork {
 }
 
 class AppNetwork implements AbstractAppNetwork {
-  //Passed this access key in the --dart-define=
+  //Passed this access key in the environment varibles: --dart-define=
   static const String accessKey = Environment.apiKEY;
   static const Map<String, String> header = {
     'Authorization': "Client-ID $accessKey"
