@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:path_provider/path_provider.dart';
 import 'package:snap_grid/src/core/network/network.dart';
+import 'package:snap_grid/src/core/storage/local_storage.dart';
 import 'package:snap_grid/src/core/utils/utils.dart';
 import 'package:snap_grid/src/features/home/data/models/photo_model.dart';
 
@@ -17,8 +18,18 @@ class PhotoRepository implements AbstractPhotoRepository {
 
   @override
   Future<List<PhotoModel>> fetchPhotos(int page, int perPage) async {
-    final getPhotoRequest = await appNetwork.getRequest(
+    var getPhotoRequest = await appNetwork.getRequest(
         "https://api.unsplash.com/photos?page=$page&per_page=$perPage");
+
+    if (getPhotoRequest == null) {
+      //check storage and fetch from storage if the api call fails
+      final photosReponseFromStorage =
+          await SgLocalStorage().getPhotosFromStore();
+      if (photosReponseFromStorage != null) {
+        //if value from store is not null (that is the storeage is not empty)
+        getPhotoRequest = photosReponseFromStorage;
+      }
+    }
     return photoModelFromJson(getPhotoRequest);
   }
 

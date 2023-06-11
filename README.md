@@ -123,9 +123,9 @@ The SnapGrid app includes unit tests and widget tests to ensure the correctness 
 ![Screenshot_1686489508](https://github.com/Raks-Javac/SnapGrid/assets/56641192/1f4f6983-9df2-4a25-8268-0638d4a96d3b)
 ![Screenshot_1686489613](https://github.com/Raks-Javac/SnapGrid/assets/56641192/86a7cf1a-d26b-4684-b819-1b4fac7fb89a)
 
-## Contributing as a team member
+## Contributing to the repository.
 
-We welcome contributions to the Snapgrid Merchant App. To contribute, please follow these guidelines:
+We welcome contributions to the Snapgrid App. To contribute, please follow these guidelines:
 
 1. Fork the repository and create a new branch for your changes
 

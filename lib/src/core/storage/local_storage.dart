@@ -1,13 +1,40 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
+//snapgrid storage class
+
+class SgStoreKey {
+  static const String getPhotoKeys = "sgPhotoKey";
+}
+
+class SgLocalStorage {
+  SgLocalStorage._internal();
+  static final SgLocalStorage _instance = SgLocalStorage._internal();
+
+  factory SgLocalStorage() {
+    return _instance;
+  }
+  final LocalStorage _localStorage = LocalStorage();
+
+//gets photos response from store
+  Future<dynamic> getPhotosFromStore() async {
+    final getphoto = await _localStorage.getData(SgStoreKey.getPhotoKeys);
+    return getphoto;
+  }
+
+  //stores photos response
+  Future<dynamic> storePhotosFromStore() async {
+    final getphoto = await _localStorage.getData(SgStoreKey.getPhotoKeys);
+    return getphoto;
+  }
+}
+
 class LocalStorage {
+  LocalStorage._internal();
   static final LocalStorage _instance = LocalStorage._internal();
 
   factory LocalStorage() {
     return _instance;
   }
-
-  LocalStorage._internal();
 
   Future<void> saveData(String key, dynamic value) async {
     final prefs = await SharedPreferences.getInstance();
