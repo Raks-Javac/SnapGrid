@@ -22,9 +22,8 @@ class SgLocalStorage {
   }
 
   //stores photos response
-  Future<dynamic> storePhotosFromStore() async {
-    final getphoto = await _localStorage.getData(SgStoreKey.getPhotoKeys);
-    return getphoto;
+  Future<void> storePhotosFromStore(dynamic value) async {
+    await _localStorage.saveData(SgStoreKey.getPhotoKeys, value);
   }
 }
 

@@ -30,6 +30,8 @@ class PhotoRepository implements AbstractPhotoRepository {
         getPhotoRequest = photosReponseFromStorage;
       }
     }
+
+    await SgLocalStorage().storePhotosFromStore(getPhotoRequest);
     return photoModelFromJson(getPhotoRequest);
   }
 
