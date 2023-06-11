@@ -96,16 +96,23 @@ class DetailsView extends StatelessWidget {
                           style: context.textTheme.titleSmall,
                         ),
                         addVerticalSpacing(19),
-                        Text(
-                          "Description",
-                          style: context.textTheme.bodyMedium,
-                        ),
-                        addVerticalSpacing(3),
-                        Text(
-                          "${photoData.description ?? photoData.altDescription!} ",
-                          style: context.textTheme.titleSmall,
-                        ),
-                        addVerticalSpacing(12),
+                        if (photoData.description != null ||
+                            photoData.altDescription != null)
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "Description",
+                                style: context.textTheme.bodyMedium,
+                              ),
+                              addVerticalSpacing(3),
+                              Text(
+                                "${photoData.description ?? photoData.altDescription!} ",
+                                style: context.textTheme.titleSmall,
+                              ),
+                              addVerticalSpacing(12),
+                            ],
+                          ),
                         Text(
                           "Likes",
                           style: context.textTheme.bodyMedium,

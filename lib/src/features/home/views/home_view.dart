@@ -21,7 +21,11 @@ class _HomeViewState extends State<HomeView> {
   @override
   void initState() {
     super.initState();
+    //runs this function in the initState
+    callInit();
+  }
 
+  callInit() {
     // Fetch initial photos
     final provider = Provider.of<PhotoProvider>(context, listen: false);
     provider.fetchPhotos();
