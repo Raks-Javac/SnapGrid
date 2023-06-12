@@ -2,6 +2,7 @@ import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
 import 'package:snap_grid/src/core/network/network.dart';
 import 'package:snap_grid/src/features/home/provider/home_provider.dart';
+import 'package:snap_grid/src/shared/resources/theme.dart';
 
 //a  one time instantiation of the app network service
 //which would passed to all providers needing this service
@@ -13,5 +14,6 @@ AppNetwork appNetwork = AppNetwork();
 List<SingleChildWidget> get appProvider {
   return [
     ChangeNotifierProvider(create: (context) => PhotoProvider(appNetwork)),
+    ChangeNotifierProvider(create: (context) => ThemeProvider()),
   ];
 }

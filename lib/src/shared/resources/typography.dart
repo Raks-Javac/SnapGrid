@@ -25,11 +25,15 @@ abstract class SgTypography {
   //dark
   static TextTheme get darkTextTheme {
     return TextTheme(
-      titleLarge: SgTypography.titleLarge,
-      titleMedium: SgTypography.titleMedium,
-      titleSmall: SgTypography.titleSmall,
-      bodyMedium: SgTypography.bodyMedium,
-      bodySmall: SgTypography.bodySmall,
+      titleLarge: SgTypography.titleLarge.copyWith(color: SgColors.normalBlack),
+      titleMedium: SgTypography.titleMedium
+          .copyWith(color: SgColors.neutralBackgroundColor),
+      titleSmall: SgTypography.titleSmall
+          .copyWith(color: SgColors.neutralBackgroundColor),
+      bodyMedium: SgTypography.bodyMedium
+          .copyWith(color: SgColors.neutralBackgroundColor),
+      bodySmall: SgTypography.bodySmall
+          .copyWith(color: SgColors.neutralBackgroundColor),
     );
   }
 

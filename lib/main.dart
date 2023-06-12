@@ -22,16 +22,19 @@ class SnapGridApp extends StatelessWidget {
       builder: (context, widget) {
         return MultiProvider(
           providers: [...appProvider],
-          child: MaterialApp(
-            debugShowCheckedModeBanner: false,
-            onGenerateRoute: SgRouter.generateRoutes,
-            navigatorKey: SgNavigator.key,
-            initialRoute: SgRoutes.splashScreen,
-            title: SgStrings.kAppName,
-            theme: SgTheme.lightTheme,
-            themeMode: ThemeMode.light,
-            darkTheme: SgTheme.darkTheme,
-          ),
+          child: Builder(builder: (context) {
+            final appThemeProvider = context.watch<ThemeProvider>();
+            return MaterialApp(
+              debugShowCheckedModeBanner: false,
+              onGenerateRoute: SgRouter.generateRoutes,
+              navigatorKey: SgNavigator.key,
+              initialRoute: SgRoutes.splashScreen,
+              title: SgStrings.kAppName,
+              theme: appThemeProvider.returnThemeBasedOnToggle(),
+              themeMode: ThemeMode.light,
+              darkTheme: SgTheme.darkTheme,
+            );
+          }),
         );
       },
     );

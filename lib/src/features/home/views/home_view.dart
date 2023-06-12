@@ -9,6 +9,7 @@ import 'package:snap_grid/src/core/navigation/nav_export.dart';
 import 'package:snap_grid/src/features/home/provider/home_provider.dart';
 import 'package:snap_grid/src/features/home/widget/photo_item.dart';
 import 'package:snap_grid/src/shared/resources/res.dart';
+import 'package:snap_grid/src/shared/resources/theme.dart';
 import 'package:snap_grid/src/shared/widgets/grid_pallete.dart';
 
 class HomeView extends StatefulWidget {
@@ -62,23 +63,29 @@ class _HomeViewState extends State<HomeView> {
 
   @override
   Widget build(BuildContext context) {
+    final appThemeProvider = Provider.of<ThemeProvider>(context);
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: SgColors.neutralBackgroundColor,
+        backgroundColor: context.theme.scaffoldBackgroundColor,
         centerTitle: true,
         title: Text(
           "SnapGallary",
           style: context.textTheme.titleMedium,
         ),
-        // actions: [
-        //   IconButton(
-        //     onPressed: () {},
-        //     icon: const SgWidgetsRenderSvg(
-        //       svgPath: SgIconsAssets.searchIcon,
-        //     ),
-        //   )
-        // ],
+        actions: [
+          IconButton(
+            onPressed: () {
+              appThemeProvider.toggleThemeMode();
+            },
+            icon: Icon(globalAppThemeState == AppTheme.light
+                ? Icons.mode_night_rounded
+                : Icons.sunny),
+            color: globalAppThemeState == AppTheme.light
+                ? SgColors.normalBlack
+                : SgColors.neutralBackgroundColor,
+          ).paddingOnly(right: 10)
+        ],
       ),
       body: Consumer<PhotoProvider>(builder: (context, photoProvider, _) {
         // photoProvider.fetchPhotos();

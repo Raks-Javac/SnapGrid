@@ -49,8 +49,9 @@ class PhotoItemWidget extends StatelessWidget {
                   child: Text(
                     photoDescription,
                     style: context.textTheme.bodySmall!.copyWith(
-                      color: SgColors.lightBlack.withOpacity(0.7),
-                      fontSize: 10.sp,
+                      color:
+                          context.textTheme.bodySmall!.color!.withOpacity(0.6),
+                      fontSize: 9.5.sp,
                     ),
                   ),
                 )
