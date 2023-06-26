@@ -21,7 +21,7 @@ abstract class SgTheme {
   static ThemeData get darkTheme {
     return ThemeData(
       primaryColor: SgColors.primaryColor,
-      scaffoldBackgroundColor: SgColors.normalBlack,
+      scaffoldBackgroundColor: SgColors.darkModeBackgroundColor,
       textTheme: SgTypography.darkTextTheme,
     );
   }

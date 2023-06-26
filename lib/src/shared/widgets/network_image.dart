@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:snap_grid/src/core/extensions/context_extensions.dart';
 import 'package:snap_grid/src/shared/resources/res.dart';
+import 'package:snap_grid/src/shared/resources/theme.dart';
 
 class SgWidgetsCachedNetworkImage extends StatelessWidget {
   final String url;
@@ -30,7 +31,9 @@ class SgWidgetsCachedNetworkImage extends StatelessWidget {
         width: 100.0,
         height: 90.0,
         child: Shimmer.fromColors(
-          baseColor: SgColors.normalBlack.withOpacity(0.9),
+          baseColor: globalAppThemeState == AppTheme.light
+              ? SgColors.normalBlack.withOpacity(0.9)
+              : SgColors.neutralBackgroundColor.withOpacity(0.9),
           highlightColor: SgColors.normalBlack.withOpacity(0.2),
           child: placeHolderWidget ??
               const Icon(

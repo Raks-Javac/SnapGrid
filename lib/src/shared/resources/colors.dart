@@ -5,4 +5,5 @@ abstract class SgColors {
   static const Color neutralBackgroundColor = Color(0xffFFFFFF);
   static const Color lightBlack = Color(0xFF404040);
   static const Color normalBlack = Colors.black;
+  static const Color darkModeBackgroundColor = Color(0xFF171717);
 }

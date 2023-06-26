@@ -1,8 +1,8 @@
-import 'dart:io';
-
+import 'package:dio/dio.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:gallery_saver/gallery_saver.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:snap_grid/src/core/network/network.dart';
-import 'package:snap_grid/src/core/storage/local_storage.dart';
 import 'package:snap_grid/src/core/utils/utils.dart';
 import 'package:snap_grid/src/features/home/data/models/photo_model.dart';
 
@@ -22,34 +22,60 @@ class PhotoRepository implements AbstractPhotoRepository {
       "https://api.unsplash.com/photos?page=$page&per_page=$perPage",
     );
     Logger.logInfo(getPhotoRequest);
-    if (getPhotoRequest == null) {
-      //check storage and fetch from storage if the api call fails
-      final photosReponseFromStorage =
-          await SgLocalStorage().getPhotosFromStore();
-      if (photosReponseFromStorage != null) {
-        //if value from store is not null (that is the storeage is not empty)
-        Logger.logInfo(photosReponseFromStorage);
-        getPhotoRequest = photosReponseFromStorage;
-      }
-    }
+    // if (getPhotoRequest == null) {
+    //check storage and fetch from storage if the api call fails
+    //   final photosReponseFromStorage =
+    //       await SgLocalStorage().getPhotosFromStore();
+    //   if (photosReponseFromStorage != null) {
+    //     //if value from store is not null (that is the storeage is not empty)
+    //     Logger.logInfo(photosReponseFromStorage);
+    //     getPhotoRequest = photosReponseFromStorage;
+    //   }
+    // }
 
-    await SgLocalStorage().storePhotosFromStore(getPhotoRequest);
+    // await SgLocalStorage().storePhotosFromStore(getPhotoRequest);
     return photoModelFromJson(getPhotoRequest);
   }
 
   @override
   Future<void> downloadPhotoFromDownloadUrl(String imageUrl) async {
-    final response = await appNetwork.getOrdinaryRequest(imageUrl);
+    Logger.logInfo("image url $imageUrl");
+    final String dir = (await getApplicationDocumentsDirectory()).path;
+    final String fileName = imageUrl.split("/").last;
 
-    if (response.statusCode == 200) {
-      final bytes = response.bodyBytes;
-      final directory = await getTemporaryDirectory();
-      final file = File('${directory.path}/image.jpg');
-      await file.writeAsBytes(bytes);
+    final String filePath = '$dir/$fileName.jpg';
+    Logger.logInfo("file path $filePath");
 
-      Logger.logInfo('Image downloaded and saved!');
-    } else {
-      Logger.logError('Failed to download image.');
+    final Dio dio = Dio();
+    try {
+      await dio.download(
+        imageUrl,
+        filePath,
+        onReceiveProgress: (receivedBytes, totalBytes) async {
+          if (totalBytes != -1) {
+            final int progress = (receivedBytes / totalBytes * 100).toInt();
+            Fluttertoast.showToast(
+              msg: "Download progress: $progress%",
+              toastLength: Toast.LENGTH_SHORT,
+              gravity: ToastGravity.BOTTOM,
+            );
+            if (progress == 100) {
+              Fluttertoast.showToast(
+                msg: "Download complete!",
+                toastLength: Toast.LENGTH_SHORT,
+                gravity: ToastGravity.BOTTOM,
+              );
+              GallerySaver.saveImage(filePath, toDcim: true);
+            }
+          }
+        },
+      );
+    } catch (e) {
+      Fluttertoast.showToast(
+        msg: "Download failed!",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+      );
     }
   }
 }

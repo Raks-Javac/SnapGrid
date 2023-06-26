@@ -37,6 +37,10 @@ dependencies:
 
   shimmer: ^3.0.0
 
+  fluttertoast: ^8.2.2
+  dio: ^5.2.1+1
+  gallery_saver: ^2.3.2
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

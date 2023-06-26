@@ -34,9 +34,6 @@ class _HomeViewState extends State<HomeView> {
 
   callInit() async {
     final provider = Provider.of<PhotoProvider>(context, listen: false);
-    // await Isolate.spawn<SendPort>(_fetchPhotosInIsolate, receivePort.sendPort);
-    // SendPort mikeSendPort = await receivePort.first;
-    // Listen for scroll events to trigger pagination
     provider.fetchPhotos();
     _scrollController.addListener(() {
       if (_scrollController.position.pixels ==
@@ -45,21 +42,6 @@ class _HomeViewState extends State<HomeView> {
       }
     });
   }
-
-  // @override
-  // void dispose() {
-  //   super.dispose();
-  //   _isolate?.kill(priority: Isolate.immediate);
-  // }
-
-//   void _fetchPhotosInIsolate(SendPort sendPort) {
-//     // Fetch the photos here
-// // Fetch initial photos
-//     final provider = Provider.of<PhotoProvider>(context, listen: false);
-
-//     // Send the fetched photos back to the main isolate
-//     sendPort.send(provider.fetchPhotos);
-//   }
 
   @override
   Widget build(BuildContext context) {
@@ -88,7 +70,6 @@ class _HomeViewState extends State<HomeView> {
         ],
       ),
       body: Consumer<PhotoProvider>(builder: (context, photoProvider, _) {
-        // photoProvider.fetchPhotos();
         //when its in loading state
         if (photoProvider.isLoading) {
           return const Center(child: CircularProgressIndicator());

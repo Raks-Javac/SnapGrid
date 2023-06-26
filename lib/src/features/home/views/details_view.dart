@@ -128,25 +128,25 @@ class DetailsView extends StatelessWidget {
                   ],
                 ),
               )),
-              // GestureDetector(
-              //     onTap: () {
-              //       photoProvider
-              //           .downloadImage(photoData.links?.download ?? "");
-              //     },
-              //     child: Container(
-              //       width: double.infinity,
-              //       height: 42.h,
-              //       decoration: BoxDecoration(
-              //         borderRadius: BorderRadius.circular(100),
-              //         color: context.theme.primaryColor,
-              //       ),
-              //       child: Text(
-              //         "Save Image",
-              //         style: context.textTheme.bodyMedium!.copyWith(
-              //           color: SgColors.neutralBackgroundColor,
-              //         ),
-              //       ).center,
-              //     )).marginSymmetric(vertical: 10, horizontal: 10)
+              GestureDetector(
+                  onTap: () {
+                    photoProvider
+                        .downloadImage(photoData.links?.download ?? "");
+                  },
+                  child: Container(
+                    width: double.infinity,
+                    height: 45.h,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(100),
+                      color: context.theme.primaryColor,
+                    ),
+                    child: Text(
+                      "Save Image",
+                      style: context.textTheme.bodyMedium!.copyWith(
+                        color: SgColors.neutralBackgroundColor,
+                      ),
+                    ).center,
+                  )).marginSymmetric(vertical: 10, horizontal: 10)
             ],
           ).paddingSymmetric(
             horizontal: 10,

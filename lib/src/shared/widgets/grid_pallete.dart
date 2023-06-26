@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:snap_grid/src/core/extensions/context_extensions.dart';
+import 'package:snap_grid/src/shared/resources/res.dart';
+import 'package:snap_grid/src/shared/resources/theme.dart';
 
 class SgWidgetsShadowedGridView extends StatelessWidget {
   final List<Widget> items;
@@ -24,6 +26,9 @@ class SgWidgetsShadowedGridView extends StatelessWidget {
         itemBuilder: (BuildContext context, int index) {
           return Container(
             decoration: BoxDecoration(
+              color: globalAppThemeState == AppTheme.light
+                  ? Colors.white
+                  : SgColors.normalBlack,
               borderRadius: BorderRadius.circular(10.0),
               boxShadow: [
                 BoxShadow(
@@ -36,7 +41,9 @@ class SgWidgetsShadowedGridView extends StatelessWidget {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(10.0),
               child: Material(
-                color: context.theme.scaffoldBackgroundColor,
+                color: globalAppThemeState == AppTheme.light
+                    ? context.theme.scaffoldBackgroundColor
+                    : SgColors.normalBlack,
                 child: items[
                     index], // Replace this with your actual grid item widget
               ),
